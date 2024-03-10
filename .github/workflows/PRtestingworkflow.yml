@@ -6,7 +6,7 @@ on:
       - 'main'
     paths:
 # change path to appropriate branch for PR
-      - 'https://github.com/a-andre/gramps-flatpak/blob/update/org.gramps_project.Gramps.yml'
+      - 'https://github.com/a-andre/gramps-flatpak/blob/update'
   workflow_dispatch:
 
 jobs:
@@ -29,11 +29,11 @@ jobs:
 
     - name: BuildFlatpak
       run: |
-        flatpak-builder --repo=repo --force-clean build-dir org.gramps_project.Gramps.yml
+        flatpak-builder --repo=repo --force-clean build-dir https://github.com/a-andre/gramps-flatpak/blob/update/org.gramps_project.Gramps.yml
 
     - name: BuildBundle
       run: |
-        flatpak build-bundle repo gramps.flatpak org.gramps_project.Gramps.yml
+        flatpak build-bundle repo gramps.flatpak https://github.com/a-andre/gramps-flatpak/blob/update/org.gramps_project.Gramps.yml
 
     - name: UploadBundle
       uses: actions/upload-artifact@main
